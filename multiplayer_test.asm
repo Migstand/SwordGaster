@@ -26,11 +26,11 @@ main:
 	
 multplay:
 	
-	jal player1
+	jal players
 	
-	jal player2
+	#jal player2
 
-	jal timer
+	#jal timer
 	
 	j multplay
 
@@ -39,16 +39,23 @@ fim:	addi $2, $0, 10
 	syscall
 	
 	
-player1:
+players:
+	add $13, $0, $31
 	lw $10, 40($17)
 	
+	jal timer
+	
 	bne $10, $0, loopmov1
+	
+	lw $10, 48($17)
+	bne $10, $0, loopmov2
+	
 	
 	lw $8, 0($23)
 	
 	beq $8, $0, voidm
 	
-	lw $9, 4($23)
+pl1:	lw $9, 4($23)
 	  
 	addi $10, $0, 'a'
 	beq $9, $10, movl1
@@ -62,6 +69,21 @@ player1:
 	addi $10, $0, 's'
 	beq $9, $10, movd1
 	
+	#jal timer
+	
+	addi $10, $0, 'j'
+	beq $9, $10, movl2
+	
+	addi $10, $0, 'i'
+	beq $9, $10, movu2
+	
+	addi $10, $0, 'l'
+	beq $9, $10, movr2
+	
+	addi $10, $0, 'k'
+	beq $9, $10, movd2
+	
+	add $31, $0, $13
 	jr $31
 
 
@@ -73,14 +95,19 @@ loopmov1:
 	
 	lw $9, 44($17)
 	
+	
 	beq $9, 1, movl1
 	beq $9, 2, movu1
 	beq $9, 3, movr1
 	beq $9, 4, movd1
-	
+	add $31, $0, $13
 	jr $31	
 movl1:	
-
+	
+	addi $4, $0, 1
+	addi $2, $0, 1
+	syscall
+	
 	lw $8, 0($17)
 	
 	lw $9, 8($17)
@@ -102,10 +129,16 @@ movl1:
 skipl1:	addi $10, $0, 1
 	sw $10, 44($17)
 	
+	
+	add $31, $0, $13
 	jr $31
 
 movu1:	
-
+	
+	addi $4, $0, 2
+	addi $2, $0, 1
+	syscall
+	
 	lw $8, 0($17)
 	
 	lw $9, 8($17)
@@ -128,11 +161,16 @@ movu1:
 skipu1:	addi $10, $0, 2
 	sw $10, 44($17)
 	
+	
+	add $31, $0, $13
 	jr $31
 	
 
 movr1:	
-
+	addi $4, $0, 3
+	addi $2, $0, 1
+	syscall
+	
 	lw $8, 0($17)
 	
 	lw $9, 8($17)
@@ -156,10 +194,16 @@ skipr1:	addi $10, $0, 3
 	sw $10, 44($17)
 	
 	
+	add $31, $0, $13
 	jr $31		
 	
 movd1:	
-
+	
+	addi $4, $0, 4
+	addi $2, $0, 1
+	syscall
+	
+	
 	lw $8, 0($17)
 	
 	lw $9, 8($17)
@@ -183,34 +227,15 @@ skipd1:	addi $10, $0, 4
 	sw $10, 44($17)
 	
 	
+	
+	add $31, $0, $13
 	jr $31
 			
-player2:
-	lw $10, 48($17)
-	
-	bne $10, $0, loopmov2
 
-	lw $8, 0($23)
-	
-	beq $8, $0, voidm
-	
-	lw $9, 4($23)
-	  
-	addi $10, $0, 'j'
-	beq $9, $10, movl2
-	
-	addi $10, $0, 'i'
-	beq $9, $10, movu2
-	
-	addi $10, $0, 'l'
-	beq $9, $10, movr2
-	
-	addi $10, $0, 'k'
-	beq $9, $10, movd2
-	
-	jr $31
+
 	
 loopmov2:
+	
 	
 	addi $10, $10, -1
 	sw $10, 48($17)
@@ -223,10 +248,17 @@ loopmov2:
 	beq $9, 3, movr2
 	beq $9, 4, movd2
 	
+	
+	add $31, $0, $13
 	jr $31
 	
 movl2:	
-
+	
+	addi $4, $0, 5
+	addi $2, $0, 1
+	syscall
+	
+	
 	lw $8, 4($17)
 	
 	lw $9, 12($17)
@@ -249,10 +281,16 @@ movl2:
 skipl2:	addi $10, $0, 1
 	sw $10, 52($17)
 	
+	
+	add $31, $0, $13
 	jr $31
 
 movu2:	
-
+	
+	addi $4, $0, 6
+	addi $2, $0, 1
+	syscall
+	
 	lw $8, 4($17)
 	
 	lw $9, 12($17)
@@ -275,10 +313,15 @@ movu2:
 skipu2:	addi $10, $0, 2
 	sw $10, 52($17)
 	
+	
+	add $31, $0, $13
 	jr $31
 	
 
 movr2:	
+	addi $4, $0, 7
+	addi $2, $0, 1
+	syscall
 
 	lw $8, 4($17)
 	
@@ -302,10 +345,17 @@ movr2:
 skipr2:	addi $10, $0, 3
 	sw $10, 52($17)
 	
+	
+	add $31, $0, $13
 	jr $31		
 	
 movd2:	
-
+	
+	addi $4, $0, 8
+	addi $2, $0, 1
+	syscall
+	
+	
 	lw $8, 4($17)
 	
 	lw $9, 12($17)
@@ -328,9 +378,16 @@ movd2:
 skipd2:	addi $10, $0, 4
 	sw $10, 52($17)
 	
+	
+	add $31, $0, $13
 	jr $31	
 	
-voidm: jr $31
+voidm: 
+	#addi $4, $0, 1
+	#addi $2, $0, 1
+	#syscall
+	
+	jr $31
 
 timer:	
 	add $4, $0, 500
@@ -341,3 +398,7 @@ tloop:
 	bne $4, $0, tloop
 	
 	jr $31
+
+espaverif:
+	
+	
