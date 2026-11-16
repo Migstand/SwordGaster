@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="6d70e1da-d79e-448e-8e72-c4184fc86c3d" activeEnvironment="Default" name="CoordenadasSoap" resourceRoot="" soapui-version="5.10.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="97d17a9d-a676-4441-bc08-0b95e7e67a8f" wsaVersion="NONE" name="CoordenadasBinding" type="wsdl" bindingName="{http://coordenadas.jogo2d.com/soap}CoordenadasBinding" soapVersion="1_1" anonymous="optional" definition="file:/C:/Users/albsp/Downloads/IFRN/DSD_Desenvolvimento_de_Sistemas_Distribuídos/Projeto-Soap/jogo/src/main/resources/wsdl/coodenadas.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\C:\Users\albsp\Downloads\IFRN\DSD_Desenvolvimento_de_Sistemas_Distribuídos\Projeto-Soap\jogo\src\main\resources\wsdl\coodenadas.wsdl"><con:part><con:url>file:\C:\Users\albsp\Downloads\IFRN\DSD_Desenvolvimento_de_Sistemas_Distribuídos\Projeto-Soap\jogo\src\main\resources\wsdl\coodenadas.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://coordenadas.jogo2d.com/soap" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://coordenadas.jogo2d.com/soap">
+  <wsdl:types>
+    <xsd:schema>
+      <xsd:import namespace="http://coordenadas.jogo2d.com/soap" schemaLocation="coordenadas.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="calcularMovimentoRequest">
+    <wsdl:part name="parameters" element="tns:CalcularMovimento"/>
+  </wsdl:message>
+  <wsdl:message name="calcularMovimentoResponse">
+    <wsdl:part name="parameters" element="tns:CalcularMovimentoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="calcularPuloRequest">
+    <wsdl:part name="parameters" element="tns:CalcularPulo"/>
+  </wsdl:message>
+  <wsdl:message name="calcularPuloResponse">
+    <wsdl:part name="parameters" element="tns:CalcularPuloResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="CoordenadasPortType">
+    <wsdl:operation name="CalcularMovimento">
+      <wsdl:input message="tns:calcularMovimentoRequest"/>
+      <wsdl:output message="tns:calcularMovimentoResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="CalcularPulo">
+      <wsdl:input message="tns:calcularPuloRequest"/>
+      <wsdl:output message="tns:calcularPuloResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CoordenadasBinding" type="tns:CoordenadasPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="CalcularMovimento">
+      <soap:operation soapAction="http://coordenadas.jogo2d.com/soap/CalcularMovimento"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalcularPulo">
+      <soap:operation soapAction="http://coordenadas.jogo2d.com/soap/CalcularPulo"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CoordenadasService">
+    <wsdl:port name="CoordenadasPort" binding="tns:CoordenadasBinding">
+      <soap:address location="http://localhost:8080/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>file:\C:\Users\albsp\Downloads\IFRN\DSD_Desenvolvimento_de_Sistemas_Distribuídos\Projeto-Soap\jogo\src\main\resources\wsdl\coordenadas.xsd</con:url><con:content><![CDATA[<xs:schema targetNamespace="http://coordenadas.jogo2d.com/soap" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:coord="http://coordenadas.jogo2d.com/soap">
+  <xs:simpleType name="DirecaoMovimento">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DIREITA"/>
+      <xs:enumeration value="ESQUERDA"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="CalcularMovimentoRequest">
+    <xs:sequence>
+      <xs:element name="posicaoAtualX" type="xs:double"/>
+      <xs:element name="direcao" type="coord:DirecaoMovimento"/>
+      <xs:element name="velocidade" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CalcularMovimentoResponse">
+    <xs:sequence>
+      <xs:element name="posicaoFinalX" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CalcularPuloRequest">
+    <xs:sequence>
+      <xs:element name="posicaoAtualY" type="xs:double"/>
+      <xs:element name="gravidade" type="xs:double"/>
+      <xs:element name="velocidade" type="xs:double"/>
+      <xs:element name="deltatempo" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CalcularPuloResponse">
+    <xs:sequence>
+      <xs:element name="posicaoFinalY" type="xs:double"/>
+      <xs:element name="velocidadeNova" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CalcularMovimento" type="coord:CalcularMovimentoRequest"/>
+  <xs:element name="CalcularMovimentoResponse" type="coord:CalcularMovimentoResponse"/>
+  <xs:element name="CalcularPulo" type="coord:CalcularPuloRequest"/>
+  <xs:element name="CalcularPuloResponse" type="coord:CalcularPuloResponse"/>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/ws</con:endpoint></con:endpoints><con:operation id="d12c8136-5f5c-48ad-8521-62ee481a0c4c" isOneWay="false" action="http://coordenadas.jogo2d.com/soap/CalcularMovimento" name="CalcularMovimento" bindingOperationName="CalcularMovimento" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f15c83b2-d825-4e35-90af-ba0aa28a654e" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://coordenadas.jogo2d.com/soap">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <soap:CalcularMovimento>\r
+         <soap:posicaoAtualX>60</soap:posicaoAtualX>\r
+         <soap:direcao>ESQUERDA</soap:direcao>\r
+         <soap:velocidade>10</soap:velocidade>\r
+      </soap:CalcularMovimento>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://coordenadas.jogo2d.com/soap/CalcularMovimento"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="e677a069-73ed-4f78-bdb5-eadd863c6232" isOneWay="false" action="http://coordenadas.jogo2d.com/soap/CalcularPulo" name="CalcularPulo" bindingOperationName="CalcularPulo" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b4942915-b947-4e61-a7d1-f6838d855154" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://coordenadas.jogo2d.com/soap">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <soap:CalcularPulo>\r
+         <soap:posicaoAtualY>200</soap:posicaoAtualY>\r
+         <soap:gravidade>10</soap:gravidade>\r
+         <soap:velocidade>-10</soap:velocidade>\r
+         <soap:deltatempo>1</soap:deltatempo>\r
+      </soap:CalcularPulo>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://coordenadas.jogo2d.com/soap/CalcularPulo"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="2ac05907-0336-4a3a-bd38-fd470022db11" name="Soma1"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="2d2d7d98-2530-45f1-bb85-965266ba5152" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Soma1" searchProperties="true"><con:settings/><con:testStep type="request" id="bdda0ba0-75e4-48b4-b128-44338b148c53" name="CalcularMovimento - Request 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CoordenadasBinding</con:interface><con:operation>CalcularMovimento</con:operation><con:request name="CalcularMovimento - Request 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="5c230380-bb58-4fd9-a22c-6bbc0dded897"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://coordenadas.jogo2d.com/soap">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <soap:CalcularMovimento>\r
+         <soap:posicaoAtualX>50</soap:posicaoAtualX>\r
+         <soap:direcao>DIREITA</soap:direcao>\r
+         <soap:velocidade>5</soap:velocidade>\r
+      </soap:CalcularMovimento>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="85fd82d6-7a72-4abd-82c9-793eb8a33bc3" name="SOAP Response"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://coordenadas.jogo2d.com/soap/CalcularMovimento"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

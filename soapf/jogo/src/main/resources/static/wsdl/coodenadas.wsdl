@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding= "UTF-8"?>
+
+<wsdl:definitions
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:tns="http://coordenadas.jogo2d.com/soap"
+    targetNamespace="http://coordenadas.jogo2d.com/soap">
+
+    <wsdl:types>
+        <xsd:schema>
+            <xsd:import
+                namespace="http://coordenadas.jogo2d.com/soap"
+                schemaLocation="coordenadas.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+
+    <wsdl:message name = "calcularMovimentoRequest">
+        <wsdl:part 
+        name = "parameters"
+        element= "tns:CalcularMovimento"/>
+    </wsdl:message>
+    
+    <wsdl:message name = "calcularMovimentoResponse">
+        <wsdl:part 
+        name = "parameters"
+        element= "tns:CalcularMovimentoResponse"/>
+    </wsdl:message>
+    
+    <wsdl:message name = "calcularPuloRequest">
+        <wsdl:part 
+        name = "parameters"
+        element= "tns:CalcularPulo"/>
+    </wsdl:message>
+    
+    <wsdl:message name = "calcularPuloResponse">
+        <wsdl:part 
+        name = "parameters"
+        element= "tns:CalcularPuloResponse"/>
+    </wsdl:message>
+
+    <wsdl:portType name = "CoordenadasPortType">
+        
+        <wsdl:operation name = "CalcularMovimento">
+            <wsdl:input
+                message = "tns:calcularMovimentoRequest"/>
+            <wsdl:output 
+                message = "tns:calcularMovimentoResponse"/>
+        </wsdl:operation>
+        
+        <wsdl:operation name = "CalcularPulo">
+            <wsdl:input
+                message = "tns:calcularPuloRequest"/>
+            <wsdl:output 
+                message = "tns:calcularPuloResponse"/>
+        </wsdl:operation>
+    
+    </wsdl:portType>
+
+    <wsdl:binding name = "CoordenadasBinding" type= "tns:CoordenadasPortType">
+        <soap:binding style = "document"
+            transport = "http://schemas.xmlsoap.org/soap/http"/>
+        
+        <wsdl:operation name = "CalcularMovimento">
+            <soap:operation soapAction = "http://coordenadas.jogo2d.com/soap/CalcularMovimento"/>
+            <wsdl:input><soap:body use = "literal"/></wsdl:input>
+            <wsdl:output><soap:body use = "literal"/></wsdl:output>
+        </wsdl:operation>
+        
+        <wsdl:operation name = "CalcularPulo">
+            <soap:operation soapAction = "http://coordenadas.jogo2d.com/soap/CalcularPulo"/>
+            <wsdl:input><soap:body use = "literal"/></wsdl:input>
+            <wsdl:output><soap:body use = "literal"/></wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+
+    <wsdl:service name = "CoordenadasService">
+        <wsdl:port name = "CoordenadasPort" binding = "tns:CoordenadasBinding">
+            <soap:address location = "http://localhost:8080/ws"/>
+        </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>
+
+
+

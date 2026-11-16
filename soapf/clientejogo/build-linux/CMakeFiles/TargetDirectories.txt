@@ -1,0 +1,3 @@
+/workspaces/SwordGaster/soapf/clientejogo/build-linux/CMakeFiles/ClienteCoordenadas.dir
+/workspaces/SwordGaster/soapf/clientejogo/build-linux/CMakeFiles/edit_cache.dir
+/workspaces/SwordGaster/soapf/clientejogo/build-linux/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding= "UTF-8"?>
+
+<wsdl:definitions
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:tns="http://coordenadas.jogo2d.com/soap"
+    targetnamespace="http://coordenadas.jogo2d.com/soap">
+
+    <wsdl:types>
+        <xsd:schema>
+            <xsd:import
+                namespace="http://coordenadas.jogo2d.com/soap"
+                schemaLocation="coordenadas.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+
+
+</wsdl:definitions>
+
+
+

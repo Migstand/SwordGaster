@@ -1,0 +1,5 @@
+O sistema de calculo de coordenadas utiliza conexões soap entre cliente c++ e servidor Spring-Boot.
+O soap possui uma documentação rígida para transporte de mensagens, fazendo com os dados tenham mais segurança e transporte definido.
+Dessa forma, o sistema consegue enviar os dados das coordenadas do personagem com segurança entre servidor e cliente.
+Uma dificuldade da implementação do soap foi compreender as tecnologias utilizadas:  c++ e servidor Spring-Boot.
+Entender o funcionamento do xsd e wsdl também foi uma atividade complicada durante a produção da documentação manual.

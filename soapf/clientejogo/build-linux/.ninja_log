@@ -1,0 +1,8 @@
+# ninja log v5
+1	937	1794833548787684926	CMakeFiles/ClienteCoordenadas.dir/src/comunicacao/HttpClient.cpp.o	c11e413ead38e68a
+3	968	1794833548814684926	CMakeFiles/ClienteCoordenadas.dir/src/soap/SoapResponseParser.cpp.o	82f196f0c6bd1e69
+946	1036	1794833548888684925	CMakeFiles/ClienteCoordenadas.dir/src/jogo/ControleJogo.cpp.o	15139ad8e6b30755
+4	3146	1794833550997684912	CMakeFiles/ClienteCoordenadas.dir/src/jogo/Personagem.cpp.o	1e271d34e9b88934
+968	3491	1794833551340684910	CMakeFiles/ClienteCoordenadas.dir/src/jogo/ServicoCoordenadas.cpp.o	b4fd98cccba475df
+1	3665	1794833551515684909	CMakeFiles/ClienteCoordenadas.dir/src/main.cpp.o	2980b041fed91154
+3665	4004	1794833551852684906	ClienteCoordenadas	9dd92758a58296f9

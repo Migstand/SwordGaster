@@ -1,0 +1,32 @@
+pacman -S --needed mingw-w64-ucrt-x86_64-cmake mingw-w64-ucrt-x86_64-ninja
+pacman -Syu
+pacman -S --needed base-devel mingw-w64-ucrt-x86_64-toolchain
+pacman -S --needed mingw-w64-ucrt-x86_64-sfml
+pacman -S --needed mingw-w64-ucrt-x86_64-curl
+pacman -S --needed mingw-w64-ucrt-x86_64-pugixml
+
+
+// Comandos extras
+// pkg-config --modversion sfml-graphics
+// cmake -S . -B build -G Ninja
+// cmake --build build
+// pkg-config --modversion pugixml
+
+// Codespaces
+sudo apt install -y git libx11-dev libxrandr-dev libxcursor-dev libxi-dev libudev-dev libfreetype-dev libgl1-mesa-dev libflac-dev libvorbis-dev
+sudo apt install -y libharfbuzz-dev libmbedtls-dev libssh2-1-dev libegl1-mesa-dev git
+
+cmake -S . -B build -G Ninja \
+-DCMAKE_BUILD_TYPE=Release \
+-DSFML_BUILD_EXAMPLES=OFF \
+-DSFML_BUILD_TEST_SUITE=OFF
+
+sudo cmake --install build
+sudo ldconfig
+
+sudo apt update
+sudo apt install -y xfce4 xfce4-goodies tigervnc-standalone-server tigervnc-common
+sudo apt install -y novnc websockify
+
+find /usr -name novnc_proxy 2>/dev/null
+which novnc_proxy
