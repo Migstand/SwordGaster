@@ -75,7 +75,7 @@ int main() {
     CURLcode resultado = curl_global_init(CURL_GLOBAL_DEFAULT);
 
     ServicoCoordenadas servico(
-        "http://localhost:8080/ws"
+        "http://172.17.0.1:8080/ws"
     );
 
     std::future<ResultadoMovimento> futuroMovimento;
